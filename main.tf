@@ -5,16 +5,16 @@ resource "aws_instance" "public" {
   instance_type               = "t3.micro"
   subnet_id                   = "subnet-07613369be510e0d0"  #Public Subnet ID, e.g. subnet-xxxxxxxxxxx
   associate_public_ip_address = true
-  key_name                    = "Gina-terraform-ec2-key-pair" #Change to your keyname, e.g. jazeel-key-pair
+  key_name                    = "Gina-terraform-ec2-key-pair" #Change to your keyname
   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
  
   tags = {
-    Name = "Gina-terraform-ec2"    #Prefix your own name, e.g. jazeel-ec2
+    Name = "Gina-terraform-ec2"    #Prefix your own name
   }
 }
 
 resource "aws_security_group" "allow_ssh" {
-  name        = "Gina-terraform-ec2-sg" #Security group name, e.g. jazeel-terraform-security-group
+  name        = "Gina-terraform-ec2-sg" #Security group name
   description = "Allow SSH inbound"
   vpc_id      = "vpc-024ab25ff63a3d405"  #VPC ID (Same VPC as your EC2 subnet above), E.g. vpc-xxxxxxx
 }
